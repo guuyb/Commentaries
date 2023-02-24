@@ -1,10 +1,9 @@
 ﻿using Commentaries.Api.Filters;
 using Commentaries.Api.Utils;
-using Commentaries.Data;
-using Commentaries.Domain.Common.Extensions;
+using Commentaries.Application;
+using Commentaries.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -53,10 +52,8 @@ public class Startup
             c.SupportNonNullableReferenceTypes();
         });
 
-        services.AddDbContext<CommentariesContext>(options =>
-            options.UseNpgsql(Configuration.GetConnectionString("CommentariesContext")));
-
-        services.AddDomain(Configuration);
+        services.AddInfrastructure(Configuration);
+        services.AddApplication(Configuration);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

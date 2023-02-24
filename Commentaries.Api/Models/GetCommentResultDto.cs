@@ -1,4 +1,4 @@
-﻿using Commentaries.Domain.Handlers.Comments.GetComments;
+﻿using Commentaries.Application.Handlers.Comments.GetComments;
 
 namespace Commentaries.Api.Models
 {

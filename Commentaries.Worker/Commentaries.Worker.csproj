@@ -17,7 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Guuyb.Mq\Guuyb.Mq\Guuyb.Mq.csproj" />
-      <ProjectReference Include="..\Commentaries.Data.Migrations.PostgreSql\Commentaries.Data.Migrations.PostgreSql.csproj" />
-      <ProjectReference Include="..\Commentaries.Domain\Commentaries.Domain.csproj" />
+      <ProjectReference Include="..\Commentaries.Application\Commentaries.Application.csproj" />
+      <ProjectReference Include="..\Commentaries.Infrastructure\Commentaries.Infrastructure.csproj" />
     </ItemGroup>
 </Project>

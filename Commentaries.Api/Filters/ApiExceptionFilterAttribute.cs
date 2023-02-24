@@ -1,5 +1,5 @@
 ﻿using Commentaries.Api.MvcProblemDetails;
-using Commentaries.Domain.Common.Exceptions;
+using Commentaries.Application.Common.Exceptions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ValidationException = Commentaries.Domain.Common.Exceptions.ValidationException;
+using ValidationException = Commentaries.Application.Common.Exceptions.ValidationException;
 
 namespace Commentaries.Api.Filters;
 

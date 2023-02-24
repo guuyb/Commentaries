@@ -14,6 +14,10 @@
 - получить файл (контент и метаданные)
 - удалить файл из комментария
 
+# Миграции для PostgreSql
+> cd Commentaries.Infrastructure
+> dotnet ef migrations add InitialCreate --output-dir ./SecondaryAdapters/Db/Migrations
+
 # Тесты
 Представлены проектами:
 - Commentaries.Data.Test

@@ -1,4 +1,5 @@
-using Commentaries.Domain.Common.Extensions;
+using Commentaries.Application;
+using Commentaries.Infrastructure;
 using Serilog;
 
 namespace Commentaries.Worker;
@@ -44,7 +45,8 @@ public class Program
             .UseWindowsService()
             .ConfigureServices((hostContext, services) =>
             {
-                services.AddDomain(Configuration);
+                services.AddApplication(Configuration);
+                services.AddInfrastructure(Configuration);
                 services.AddWorker(Configuration);
             });
     }

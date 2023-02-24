@@ -1,4 +1,4 @@
-﻿using Commentaries.Domain.Handlers.Comments.PublishNewComment;
+﻿using Commentaries.Application.Handlers.Comments.PublishNewComment;
 
 namespace Commentaries.Worker.Models;
 

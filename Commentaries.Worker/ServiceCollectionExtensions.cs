@@ -1,11 +1,9 @@
-﻿using Commentaries.Data;
-using Commentaries.Data.Migrations.PostgreSql;
+﻿using Commentaries.Infrastructure.SecondaryAdapters.Db;
 using Commentaries.Worker.Configs;
 using Commentaries.Worker.Consumers;
 using Commentaries.Worker.HostedServices;
 using Commentaries.Worker.Models;
 using Guuyb.Mq.Extensions;
-using Microsoft.EntityFrameworkCore;
 
 namespace Commentaries.Worker;
 
@@ -15,12 +13,7 @@ public static class ServiceCollectionExtensions
         IConfiguration configuration)
     {
         services.AddOptions();
-
-        services.AddDbContext<CommentariesContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("CommentariesContext"),
-            b => b.MigrationsAssembly(typeof(PostgreSqlDesignTimeDbContextFactory).Assembly.FullName)));
-
-        services.AddHostedService<DbUpdaterService<CommentariesContext>>();
+        services.AddHostedService<DbUpdaterService<CommentariesDbContext>>();
 
         services.RegisterMq(configuration);
         services.BindConsumers<CommentariesConsumerBindingServiceConfig>(
