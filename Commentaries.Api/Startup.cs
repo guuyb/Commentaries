@@ -31,7 +31,6 @@ public class Startup
         services
             .AddControllers(options =>
             {
-                options.Filters.Add<ClientTestFilterAttribute>();
                 options.Filters.Add<ApiExceptionFilterAttribute>();
             })
             .AddJsonOptions(options =>

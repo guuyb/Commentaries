@@ -37,10 +37,11 @@ public class CommentariesClient : ICommentariesClient
         CommentariesApiConfig config)
     {
         _client = clientFactory.Get(config.BaseUrl);
-        if(config.IsClientTest)
-        {
-            _client.Headers.Add("client-test", string.Empty);
-        }
+    }
+
+    internal CommentariesClient(IFlurlClient client)
+    {
+        _client = client;
     }
 
     public Task<GetCommentsResultDto> GetCommentsAsync(

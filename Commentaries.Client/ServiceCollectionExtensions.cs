@@ -1,5 +1,8 @@
 ﻿using Flurl.Http.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Commentaries.Client.Test")]
 
 namespace Commentaries.Client;
 
