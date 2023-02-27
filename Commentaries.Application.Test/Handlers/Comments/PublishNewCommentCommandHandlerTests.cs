@@ -40,7 +40,7 @@ public class PublishNewCommentCommandHandlerTests
 
         var publishedComment = await _dbContext.Comments.FirstAsync(c => c.Id == result.CommentId);
         Assert.True(publishedComment.StateId == CommentStateEnum.Published);
-        Assert.NotNull(publishedComment.PublishedDate);
+        Assert.NotNull(publishedComment.PublishedAt);
     }
 
     [Fact]

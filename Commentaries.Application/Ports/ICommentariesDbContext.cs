@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Threading;
+using System;
 
 namespace Commentaries.Application.Ports
 {
@@ -13,5 +14,13 @@ namespace Commentaries.Application.Ports
         DbSet<ObjectType> ObjectTypes { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        void Send(object payload, string targetQueueName, Action<Optionals>? setup = null);
+        void Publish(object payload, Action<Optionals>? setup = null);
+    }
+
+    public class Optionals
+    {
+        public string? RoutingKey { get; set; }
+        public DateTime? DelayUntil { get; set; }
     }
 }

@@ -43,7 +43,7 @@ internal sealed class RemoveCommentFileCommandHandler : IRequestHandler<RemoveCo
         var file = fileOrNull!;
 
         file.IsDeleted = true;
-        file.DeletedDate = DateTime.UtcNow;
+        file.DeletedAt = DateTime.UtcNow;
 
         await _context.SaveChangesAsync(cancellation);
 

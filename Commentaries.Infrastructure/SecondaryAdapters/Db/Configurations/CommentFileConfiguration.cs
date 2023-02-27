@@ -13,7 +13,7 @@ public class CommentFileConfiguration : IEntityTypeConfiguration<CommentFile>
         builder.Property(prop => prop.FileName)
             .HasMaxLength(CommentFile.FILE_NAME_MAX_LENGTH);
 
-        builder.Property(prop => prop.UploadTimestamp)
+        builder.Property(prop => prop.UploadedAt)
             .HasUtcDateTimeConversion();
 
         builder.HasOne(p => p.Comment)
@@ -21,7 +21,7 @@ public class CommentFileConfiguration : IEntityTypeConfiguration<CommentFile>
             .HasForeignKey(x => x.CommentId)
             .OnDelete(DeleteBehavior.NoAction);
 
-        builder.Property(prop => prop.DeletedDate)
+        builder.Property(prop => prop.DeletedAt)
             .HasUtcDateTimeConversion();
     }
 }

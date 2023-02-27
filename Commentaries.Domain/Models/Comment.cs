@@ -1,6 +1,7 @@
 ﻿using Commentaries.Domain.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Commentaries.Domain.Models;
 
@@ -21,9 +22,9 @@ public class Comment
     /// <summary>
     /// Дата создания
     /// </summary>
-    public DateTime CreatedDate { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-    public DateTime UpdatedDate { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 
     /// <summary>
     /// Статус
@@ -34,7 +35,7 @@ public class Comment
     /// <summary>
     /// Дата публикации
     /// </summary>
-    public DateTime? PublishedDate { get; set; }
+    public DateTime? PublishedAt { get; set; }
 
     /// <summary>
     /// Содержание
@@ -53,4 +54,7 @@ public class Comment
     public ObjectType? ObjectType { get; set; }
 
     public ICollection<CommentFile> Files { get; set; } = new List<CommentFile>();
+
+    public static readonly Expression<Func<Comment, bool>> AbandonedRule =
+        c => c.StateId == CommentStateEnum.Draft && c.UpdatedAt == null;
 }

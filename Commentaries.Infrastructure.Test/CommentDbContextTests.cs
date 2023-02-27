@@ -20,6 +20,8 @@ public class CommentDbContextTests
         _context.CommentStates.FirstOrDefault();
         _context.ObjectTypes.FirstOrDefault();
         _context.CommentFiles.FirstOrDefault();
+        _context.OutboxMessages.FirstOrDefault();
+        _context.OutboxMessageStates.FirstOrDefault();
 
         Assert.True(true);
     }

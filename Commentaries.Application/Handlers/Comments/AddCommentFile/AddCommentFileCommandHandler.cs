@@ -51,7 +51,7 @@ internal sealed class AddCommentFileCommandHandler : IRequestHandler<AddCommentF
                 CommentId = command.CommentId,
                 FileName = command.FileName,
                 Data = ms.ToArray(),
-                UploadTimestamp = DateTime.UtcNow,
+                UploadedAt = DateTime.UtcNow,
             };
         }
         _context.CommentFiles.Add(commentFile);

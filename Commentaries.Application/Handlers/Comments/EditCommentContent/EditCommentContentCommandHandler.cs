@@ -48,7 +48,7 @@ internal class EditCommentContentCommandHandler : IRequestHandler<EditCommentCon
         }
 
         comment.Content = command.Content?.Trim();
-        comment.UpdatedDate = DateTime.UtcNow;
+        comment.UpdatedAt = DateTime.UtcNow;
         await _context.SaveChangesAsync(cancellation);
 
         return Unit.Value;

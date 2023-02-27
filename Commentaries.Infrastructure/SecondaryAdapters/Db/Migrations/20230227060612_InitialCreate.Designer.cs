@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Commentaries.Infrastructure.SecondaryAdapters.Db.Migrations
 {
     [DbContext(typeof(CommentariesDbContext))]
-    [Migration("20230224141832_InitialCreate")]
+    [Migration("20230227060612_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace Commentaries.Infrastructure.SecondaryAdapters.Db.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("ObjectId")
@@ -50,13 +50,13 @@ namespace Commentaries.Infrastructure.SecondaryAdapters.Db.Migrations
                     b.Property<int>("ObjectTypeId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("PublishedDate")
+                    b.Property<DateTime?>("PublishedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("StateId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -83,7 +83,7 @@ namespace Commentaries.Infrastructure.SecondaryAdapters.Db.Migrations
                         .IsRequired()
                         .HasColumnType("bytea");
 
-                    b.Property<DateTime>("DeletedDate")
+                    b.Property<DateTime>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("FileName")
@@ -94,7 +94,7 @@ namespace Commentaries.Infrastructure.SecondaryAdapters.Db.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("UploadTimestamp")
+                    b.Property<DateTime>("UploadedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -160,6 +160,89 @@ namespace Commentaries.Infrastructure.SecondaryAdapters.Db.Migrations
                     b.ToTable("ObjectType", "public");
                 });
 
+            modelBuilder.Entity("Commentaries.Infrastructure.SecondaryAdapters.Db.Models.OutboxMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DelayUntil")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ParentActivityId")
+                        .HasMaxLength(2048)
+                        .HasColumnType("character varying(2048)");
+
+                    b.Property<byte[]>("Payload")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("PayloadTypeName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<int>("PublishAttemptCount")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("RoutingKey")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<int>("StateId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("TargetQueueName")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("OutboxMessage", (string)null);
+                });
+
+            modelBuilder.Entity("Commentaries.Infrastructure.SecondaryAdapters.Db.Models.OutboxMessageState", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OutboxMessageState", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "New"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "Published"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "Error"
+                        });
+                });
+
             modelBuilder.Entity("Commentaries.Domain.Models.Comment", b =>
                 {
                     b.HasOne("Commentaries.Domain.Models.ObjectType", "ObjectType")
@@ -188,6 +271,15 @@ namespace Commentaries.Infrastructure.SecondaryAdapters.Db.Migrations
                         .IsRequired();
 
                     b.Navigation("Comment");
+                });
+
+            modelBuilder.Entity("Commentaries.Infrastructure.SecondaryAdapters.Db.Models.OutboxMessage", b =>
+                {
+                    b.HasOne("Commentaries.Infrastructure.SecondaryAdapters.Db.Models.OutboxMessageState", null)
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Commentaries.Domain.Models.Comment", b =>

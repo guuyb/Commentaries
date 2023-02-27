@@ -25,8 +25,8 @@ public class CommentDto
             AuthorId = c.AuthorId,
             Content = c.Content,
             StateId = c.StateId,
-            CreatedDate = c.CreatedDate,
-            PublishedDate = c.PublishedDate,
+            CreatedDate = c.CreatedAt,
+            PublishedDate = c.PublishedAt,
             Files = c.Files.AsQueryable()
                 .Where(f => !f.IsDeleted)
                 .Select(FileDto.Selector)

@@ -50,9 +50,9 @@ internal sealed class PublishNewCommentCommandHandler
         var comment = new Comment
         {
             AuthorId = command.AuthorId,
-            CreatedDate = DateTime.UtcNow,
+            CreatedAt = DateTime.UtcNow,
             StateId = CommentStateEnum.Published,
-            PublishedDate = command.PublishedDate,
+            PublishedAt = command.PublishedDate,
             Content = command.Content?.Trim(),
             ObjectId = command.ObjectId,
             ObjectType = objectType,

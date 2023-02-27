@@ -5,7 +5,6 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadMe", "ReadMe", "{9871E26A-8B54-4F1E-AB9A-77455A3A031C}"
 	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
 		readme.md = readme.md
 	EndProjectSection
 EndProject
@@ -23,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Async", "Async", "{22D2AD40
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Guuyb.Mq", "..\Guuyb.Mq\Guuyb.Mq\Guuyb.Mq.csproj", "{DF383429-2AB0-44BE-8BC0-512B6F423300}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commentaries.Infrastructure", "Commentaries.Infrastructure\Commentaries.Infrastructure.csproj", "{82B0F8F1-0522-4823-BB19-183A63B57A4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commentaries.Infrastructure", "Commentaries.Infrastructure\Commentaries.Infrastructure.csproj", "{82B0F8F1-0522-4823-BB19-183A63B57A4A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commentaries.Infrastructure.Test", "Commentaries.Infrastructure.Test\Commentaries.Infrastructure.Test.csproj", "{7F76A7F7-0605-42F9-804D-0EC9DBF9654A}"
 EndProject
@@ -32,6 +31,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commentaries.Application", "Commentaries.Application\Commentaries.Application.csproj", "{6320CFA8-A3F4-4E44-82CE-6AC8E7C0EAD2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commentaries.Domain", "Commentaries.Domain\Commentaries.Domain.csproj", "{ED85498E-2ADB-4FE9-BF06-47C074475643}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Guuyb.OutboxMessaging.Worker", "..\Guuyb.OutboxMessaging\Guuyb.OutboxMessaging.Worker\Guuyb.OutboxMessaging.Worker.csproj", "{1A98A534-60CC-45F2-BAFF-49D36E810109}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Guuyb.OutboxMessaging.Data", "..\Guuyb.OutboxMessaging\Guuyb.OutboxMessaging.Data\Guuyb.OutboxMessaging.Data.csproj", "{AF471891-5CC4-4A88-A3FA-004DC880465C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +82,14 @@ Global
 		{ED85498E-2ADB-4FE9-BF06-47C074475643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED85498E-2ADB-4FE9-BF06-47C074475643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED85498E-2ADB-4FE9-BF06-47C074475643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A98A534-60CC-45F2-BAFF-49D36E810109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A98A534-60CC-45F2-BAFF-49D36E810109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A98A534-60CC-45F2-BAFF-49D36E810109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A98A534-60CC-45F2-BAFF-49D36E810109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF471891-5CC4-4A88-A3FA-004DC880465C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF471891-5CC4-4A88-A3FA-004DC880465C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF471891-5CC4-4A88-A3FA-004DC880465C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF471891-5CC4-4A88-A3FA-004DC880465C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +99,8 @@ Global
 		{DF383429-2AB0-44BE-8BC0-512B6F423300} = {22D2AD40-9B1B-4B20-8B90-4F1BE11697AF}
 		{7F76A7F7-0605-42F9-804D-0EC9DBF9654A} = {2A6C913D-E99D-4891-B577-4CD63B3BABEF}
 		{8ED59805-C2DC-42BD-A91C-695746D31DDC} = {2A6C913D-E99D-4891-B577-4CD63B3BABEF}
+		{1A98A534-60CC-45F2-BAFF-49D36E810109} = {22D2AD40-9B1B-4B20-8B90-4F1BE11697AF}
+		{AF471891-5CC4-4A88-A3FA-004DC880465C} = {22D2AD40-9B1B-4B20-8B90-4F1BE11697AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0826876F-F50B-4DD3-ADC3-2886080A9022}

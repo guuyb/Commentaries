@@ -13,7 +13,7 @@ public class CommentFile
     public Guid CommentId { get; set; }
     public Comment? Comment { get; set; }
     public string FileName { get; set; } = string.Empty;
-    public DateTime UploadTimestamp { get; set; }
+    public DateTime UploadedAt { get; set; }
     public bool IsDeleted { get; set; }
-    public DateTime DeletedDate { get; set; }
+    public DateTime DeletedAt { get; set; }
 }

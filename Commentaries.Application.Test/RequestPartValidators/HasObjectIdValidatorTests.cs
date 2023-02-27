@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using Commentaries.Domain.Models;
 using System;
 using System.Threading.Tasks;
 using Xunit;
 using Commentaries.Application.Common.RequestParts;
+using Commentaries.Domain.Models;
 
 namespace Commentaries.Application.Test.RequestPartValidators;
 

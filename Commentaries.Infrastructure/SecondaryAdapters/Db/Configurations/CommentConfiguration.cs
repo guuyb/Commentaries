@@ -17,16 +17,16 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
             .HasMaxLength(Comment.AUTHOR_ID_MAX_LENGTH)
             .IsRequired();
 
-        builder.Property(p => p.CreatedDate)
+        builder.Property(p => p.CreatedAt)
             .HasUtcDateTimeConversion();
 
-        builder.Property(p => p.UpdatedDate)
+        builder.Property(p => p.UpdatedAt)
             .HasUtcDateTimeConversion();
 
         builder.Property(p => p.StateId)
             .HasConversion<int>();
 
-        builder.Property(p => p.PublishedDate)
+        builder.Property(p => p.PublishedAt)
             .HasUtcDateTimeConversion();
 
         builder.Property(p => p.Content)

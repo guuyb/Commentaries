@@ -15,10 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SecondaryAdapters\Db\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Guuyb.OutboxMessaging\Guuyb.OutboxMessaging.Data\Guuyb.OutboxMessaging.Data.csproj" />
     <ProjectReference Include="..\Commentaries.Application\Commentaries.Application.csproj" />
   </ItemGroup>
 

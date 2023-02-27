@@ -56,8 +56,8 @@ internal class PublishCommentCommandHandler : IRequestHandler<PublishCommentComm
         }
 
         comment.StateId = CommentStateEnum.Published;
-        comment.PublishedDate = DateTime.UtcNow;
-        comment.UpdatedDate = DateTime.UtcNow;
+        comment.PublishedAt = DateTime.UtcNow;
+        comment.UpdatedAt = DateTime.UtcNow;
         await _context.SaveChangesAsync(cancellation);
 
         return Unit.Value;

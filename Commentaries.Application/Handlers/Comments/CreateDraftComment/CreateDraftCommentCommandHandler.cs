@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Commentaries.Application.Common.Models;
 
 namespace Commentaries.Application.Handlers.Comments.CreateDraftComment;
 
@@ -50,8 +51,9 @@ internal sealed class CreateDraftCommentCommandHandler
 
         var comment = new Comment
         {
+            Id = Guid.NewGuid(),
             AuthorId = command.AuthorId,
-            CreatedDate = DateTime.UtcNow,
+            CreatedAt = DateTime.UtcNow,
             StateId = CommentStateEnum.Draft,
             Content = command.Content,
             ObjectId = command.ObjectId,
@@ -59,6 +61,8 @@ internal sealed class CreateDraftCommentCommandHandler
         };
 
         _context.Comments.Add(comment);
+        _context.Publish(new CommentCreatedMqDto(comment.Id),
+            o => o.RoutingKey = "CommentCreated");
         await _context.SaveChangesAsync(cancellationToken);
 
         return new(comment.Id);

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using Commentaries.Domain.Models;
 using Commentaries.Application.Common.RequestParts;
+using Commentaries.Domain.Models;
 
 namespace Commentaries.Application.Common.RequestPartValidators;
 
