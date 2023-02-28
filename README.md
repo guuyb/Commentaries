@@ -5,6 +5,7 @@
 # Необходимые проекты в зависимостях
 Следует подтянуть исходники из репозитория [Guuyb.Mq](https://github.com/guuyb/Guuyb.Mq)
 - Guuyb.Mq
+
 Следует подтянуть исходники из репозитория [Guuyb.OutboxMessaging](https://github.com/guuyb/Guuyb.OutboxMessaging)
 - Guuyb.OutboxMessaging.Data
 - Guuyb.OutboxMessaging.Worker
